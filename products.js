@@ -86,9 +86,20 @@ const app={
                 })
             deleteModal.hide();
         },
-        createImages(){
-            this.tempProduct.imagesUrl = [];
-            this.tempProduct.imagesUrl.push('');
+        uploadFile(){
+            // console.dir(fileInput.files[0]);
+            const file=fileInput.files[0];
+            // 以formData形式上傳 這個new FormData();會把要上傳的檔案，轉成以表單的形式發送
+            const formData=new FormData();
+            formData.append('file-to-upload',file);
+            axios.post(`${this.url}api/${this.path}/admin/upload`,formData)
+                .then((res)=>{
+                    if(res.data.success){
+                        this.tempProduct.imageUrl=res.data.imageUrl;
+                        console.log(this.tempProduct.imageUrl);
+                    }
+                    
+                })
         }
     },
     mounted() {
@@ -103,6 +114,7 @@ const app={
         };
         productModal=new bootstrap.Modal(document.querySelector('#productModal'));
         deleteModal=new bootstrap.Modal(document.querySelector('#deleteModal'));
+        const fileInput=document.querySelector('#fileInput');
         
     },
 };
