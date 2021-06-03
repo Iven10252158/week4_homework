@@ -165,7 +165,7 @@ app.component('productModal',{
                     </div>
                         <div>
                             <button type="button" class="btn btn-outline-primary w-100" @click="products.imagesUrl.push('')">新增圖片</button>
-                            <button type="button" class="btn btn-outline-danger my-1 w-100" @click="products.imagesUrl.pop()" :class="[{'disabled':products.imagesUrl.length==0}]">
+                            <button type="button" class="btn btn-outline-danger my-1 w-100" @click="products.imagesUrl.pop()" :class="{'disabled':products.imagesUrl.length==0}">
                                  刪除圖片
                             </button>
                         </div>
