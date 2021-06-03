@@ -3,6 +3,7 @@ const app={
         return{
             url:'https://vue3-course-api.hexschool.io/',
             path:'iven_vue3_course',
+            isShow:true,
             account:'',
             password:''
         }
@@ -31,6 +32,9 @@ const app={
                 }).catch((err)=>{
                     console.log(err);
                 })
+        },
+        change(){
+            this.isShow=!this.isShow;
         }
     }
 }
